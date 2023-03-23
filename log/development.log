@@ -356,3 +356,224 @@ Processing by TodosController#create as */*
 Completed 422 Unprocessable Entity in 10ms (Views: 0.4ms | ActiveRecord: 0.5ms | Allocations: 6804)
 
 
+Started POST "/users/login" for 127.0.0.1 at 2023-03-23 12:44:56 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"otsembo", "password"=>"[FILTERED]", "user"=>{"username"=>"otsembo"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007f91082ed8a8>, params: {"username"=>"otsembo", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"otsembo"}} }[0m
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007f91082ed8a8>, params: {"username"=>"otsembo", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"otsembo"}} }[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = 'otsembo' OR email = NULL) ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `login'
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007f91082ed8a8>, params: {"username"=>"otsembo", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"otsembo"}} }[0m
+Completed 200 OK in 448ms (Views: 0.6ms | ActiveRecord: 2.7ms | Allocations: 38407)
+
+
+Started POST "/todos" for 127.0.0.1 at 2023-03-23 12:45:11 +0300
+Processing by TodosController#create as */*
+  Parameters: {"title"=>"Add todo endpointSS", "description"=>"Make sure you createSS a todo on thunder client", "priority"=>2, "todo"=>{"title"=>"Add todo endpointSS", "description"=>"Make sure you createSS a todo on thunder client", "priority"=>2}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:35:in `user'
+[31mUnpermitted parameter: :todo. Context: { controller: TodosController, action: create, request: #<ActionDispatch::Request:0x00007f90f00197c0>, params: {"title"=>"Add todo endpointSS", "description"=>"Make sure you createSS a todo on thunder client", "priority"=>2, "controller"=>"todos", "action"=>"create", "todo"=>{"title"=>"Add todo endpointSS", "description"=>"Make sure you createSS a todo on thunder client", "priority"=>2}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:6:in `create'
+  [1m[36mTodo Create (0.8ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "status", "priority", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Add todo endpointSS"], ["description", "Make sure you createSS a todo on thunder client"], ["status", 0], ["priority", 2], ["user_id", 2], ["created_at", "2023-03-23 09:45:11.496413"], ["updated_at", "2023-03-23 09:45:11.496413"]]
+  ↳ app/controllers/todos_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (115.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:6:in `create'
+Completed 201 Created in 225ms (Views: 0.9ms | ActiveRecord: 119.8ms | Allocations: 25475)
+
+
+Started POST "/todos" for 127.0.0.1 at 2023-03-23 12:45:35 +0300
+Processing by TodosController#create as */*
+  Parameters: {"title"=>"Add todo endpointSS", "description"=>"Make sure you createSS a todo on thunder client", "priority"=>"CREATED", "todo"=>{"title"=>"Add todo endpointSS", "description"=>"Make sure you createSS a todo on thunder client", "priority"=>"CREATED"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:35:in `user'
+[31mUnpermitted parameter: :todo. Context: { controller: TodosController, action: create, request: #<ActionDispatch::Request:0x00007f90f8818220>, params: {"title"=>"Add todo endpointSS", "description"=>"Make sure you createSS a todo on thunder client", "priority"=>"CREATED", "controller"=>"todos", "action"=>"create", "todo"=>{"title"=>"Add todo endpointSS", "description"=>"Make sure you createSS a todo on thunder client", "priority"=>"CREATED"}} }[0m
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.3ms | Allocations: 1534)
+
+
+  
+NoMethodError (undefined method `error' for :exception:Symbol):
+  
+app/controllers/application_controller.rb:40:in `standard_error'
+Started PUT "/todos/2" for 127.0.0.1 at 2023-03-23 12:52:27 +0300
+  
+SyntaxError (/home/kevin/Moringa/Personal/apptodo/Todo-Back-End/app/controllers/todos_controller.rb:19: syntax error, unexpected local variable or method, expecting ')'
+...response(message: 'failed' data: { info: 'something went wro...
+...                           ^~~~
+/home/kevin/Moringa/Personal/apptodo/Todo-Back-End/app/controllers/todos_controller.rb:19: syntax error, unexpected ')', expecting `end'
+... went wrong todo not updated'})
+...                              ^
+/home/kevin/Moringa/Personal/apptodo/Todo-Back-End/app/controllers/todos_controller.rb:29: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/todos_controller.rb:19: syntax error, unexpected local variable or method, expecting ')'
+app/controllers/todos_controller.rb:19: syntax error, unexpected ')', expecting `end'
+app/controllers/todos_controller.rb:29: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/todos_controller.rb:19: syntax error, unexpected local variable or method, expecting ')'
+app/controllers/todos_controller.rb:19: syntax error, unexpected ')', expecting `end'
+app/controllers/todos_controller.rb:29: syntax error, unexpected end-of-input, expecting `end'
+Started PUT "/todos/2" for 127.0.0.1 at 2023-03-23 12:53:21 +0300
+Processing by TodosController#update as */*
+  Parameters: {"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>1, "id"=>"2", "todo"=>{"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>1}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:35:in `user'
+[31mUnpermitted parameters: :id, :todo. Context: { controller: TodosController, action: update, request: #<ActionDispatch::Request:0x00007f90f40d0e80>, params: {"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>1, "controller"=>"todos", "action"=>"update", "id"=>"2", "todo"=>{"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>1}} }[0m
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 10.4ms | Allocations: 4584)
+
+
+  
+NoMethodError (undefined method `error' for :exception:Symbol):
+  
+app/controllers/application_controller.rb:40:in `standard_error'
+Started PUT "/todos/2" for 127.0.0.1 at 2023-03-23 12:53:56 +0300
+Processing by TodosController#update as */*
+  Parameters: {"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>"LOW", "id"=>"2", "todo"=>{"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>"LOW"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:35:in `user'
+[31mUnpermitted parameters: :id, :todo. Context: { controller: TodosController, action: update, request: #<ActionDispatch::Request:0x00007f90f8fe6268>, params: {"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>"LOW", "controller"=>"todos", "action"=>"update", "id"=>"2", "todo"=>{"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>"LOW"}} }[0m
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.5ms | Allocations: 1479)
+
+
+  
+NoMethodError (undefined method `error' for :exception:Symbol):
+  
+app/controllers/application_controller.rb:40:in `standard_error'
+Started PUT "/todos/2" for 127.0.0.1 at 2023-03-23 12:55:03 +0300
+Processing by TodosController#update as */*
+  Parameters: {"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>"LOW", "id"=>"2", "todo"=>{"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>"LOW"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:35:in `user'
+[31mUnpermitted parameters: :id, :todo. Context: { controller: TodosController, action: update, request: #<ActionDispatch::Request:0x00007f91084670f8>, params: {"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>"LOW", "controller"=>"todos", "action"=>"update", "id"=>"2", "todo"=>{"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>"LOW"}} }[0m
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 2.2ms | Allocations: 4924)
+
+
+  
+NoMethodError (undefined method `errors' for :exception:Symbol):
+  
+app/controllers/application_controller.rb:40:in `standard_error'
+Started PUT "/todos/2" for 127.0.0.1 at 2023-03-23 12:57:18 +0300
+Processing by TodosController#update as */*
+  Parameters: {"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>"LOW", "id"=>"2", "todo"=>{"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>"LOW"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:35:in `user'
+[31mUnpermitted parameters: :id, :todo. Context: { controller: TodosController, action: update, request: #<ActionDispatch::Request:0x00007f910428dfd8>, params: {"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>"LOW", "controller"=>"todos", "action"=>"update", "id"=>"2", "todo"=>{"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>"LOW"}} }[0m
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 2.3ms | Allocations: 4924)
+
+
+  
+NoMethodError (undefined method `message' for :exception:Symbol):
+  
+app/controllers/application_controller.rb:40:in `standard_error'
+Started PUT "/todos/2" for 127.0.0.1 at 2023-03-23 12:58:05 +0300
+Processing by TodosController#update as */*
+  Parameters: {"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>"LOW", "id"=>"2", "todo"=>{"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>"LOW"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:35:in `user'
+[31mUnpermitted parameters: :id, :todo. Context: { controller: TodosController, action: update, request: #<ActionDispatch::Request:0x00007f91044d8450>, params: {"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>"LOW", "controller"=>"todos", "action"=>"update", "id"=>"2", "todo"=>{"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>"LOW"}} }[0m
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 2.4ms | Allocations: 4956)
+
+
+  
+NoMethodError (undefined method `message' for :exception:Symbol):
+  
+app/controllers/application_controller.rb:40:in `standard_error'
+Started PUT "/todos/2" for 127.0.0.1 at 2023-03-23 12:58:35 +0300
+Processing by TodosController#update as */*
+  Parameters: {"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>"LOW", "id"=>"2", "todo"=>{"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>"LOW"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:35:in `user'
+[31mUnpermitted parameters: :id, :todo. Context: { controller: TodosController, action: update, request: #<ActionDispatch::Request:0x00007f90f0492180>, params: {"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>"LOW", "controller"=>"todos", "action"=>"update", "id"=>"2", "todo"=>{"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>"LOW"}} }[0m
+Completed 422 Unprocessable Entity in 21ms (Views: 0.4ms | ActiveRecord: 2.4ms | Allocations: 5545)
+
+
+Started PUT "/todos/2" for 127.0.0.1 at 2023-03-23 12:58:51 +0300
+Processing by TodosController#update as */*
+  Parameters: {"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>1, "id"=>"2", "todo"=>{"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:35:in `user'
+[31mUnpermitted parameters: :id, :todo. Context: { controller: TodosController, action: update, request: #<ActionDispatch::Request:0x00007f90f0301f00>, params: {"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>1, "controller"=>"todos", "action"=>"update", "id"=>"2", "todo"=>{"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>1}} }[0m
+Completed 422 Unprocessable Entity in 11ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 2090)
+
+
+Started PUT "/todos/2" for 127.0.0.1 at 2023-03-23 12:59:27 +0300
+Processing by TodosController#update as */*
+  Parameters: {"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>1, "id"=>"2", "todo"=>{"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>1}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:35:in `user'
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."user_id" = ? AND "todos"."id" = ? LIMIT ?[0m  [["user_id", 2], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:15:in `update'
+[31mUnpermitted parameters: :id, :todo. Context: { controller: TodosController, action: update, request: #<ActionDispatch::Request:0x00007f90f9098170>, params: {"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>1, "controller"=>"todos", "action"=>"update", "id"=>"2", "todo"=>{"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>1}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:15:in `update'
+  [1m[36mTodo Update (1.3ms)[0m  [1m[33mUPDATE "todos" SET "title" = ?, "description" = ?, "priority" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["title", "Add todo endpoint"], ["description", "Make sure you create a todo on thunder client"], ["priority", 1], ["updated_at", "2023-03-23 09:59:27.960868"], ["id", 2]]
+  ↳ app/controllers/todos_controller.rb:15:in `update'
+  [1m[36mTRANSACTION (94.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:15:in `update'
+Completed 200 OK in 127ms (Views: 0.5ms | ActiveRecord: 97.7ms | Allocations: 8606)
+
+
+Started DELETE "/todos/1" for 127.0.0.1 at 2023-03-23 13:05:48 +0300
+  
+SyntaxError (/home/kevin/Moringa/Personal/apptodo/Todo-Back-End/config/routes.rb:14: syntax error, unexpected local variable or method, expecting `end'
+  delete '/todo/id' to: 'todo#destroy'
+                    ^~
+):
+  
+config/routes.rb:14: syntax error, unexpected local variable or method, expecting `end'
+config/routes.rb:14: syntax error, unexpected local variable or method, expecting `end'
+Started DELETE "/todos/1" for 127.0.0.1 at 2023-03-23 13:13:00 +0300
+Processing by TodosController#destroy as */*
+  Parameters: {"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>1, "id"=>"1", "todo"=>{"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:35:in `user'
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."user_id" = ? AND "todos"."id" = ? LIMIT ?[0m  [["user_id", 2], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:24:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:24:in `destroy'
+  [1m[36mTodo Destroy (21.0ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/todos_controller.rb:24:in `destroy'
+  [1m[36mTRANSACTION (253.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:24:in `destroy'
+Completed 204 No Content in 300ms (Views: 0.4ms | ActiveRecord: 275.6ms | Allocations: 7461)
+
+
+Started GET "/todos" for 127.0.0.1 at 2023-03-23 13:13:43 +0300
+Processing by TodosController#index as */*
+  Parameters: {"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>1, "todo"=>{"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:35:in `user'
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/controllers/application_controller.rb:6:in `app_response'
+Completed 200 OK in 9ms (Views: 4.0ms | ActiveRecord: 0.5ms | Allocations: 1933)
+
+
+Started DELETE "/todos/3" for 127.0.0.1 at 2023-03-23 13:14:29 +0300
+Processing by TodosController#destroy as */*
+  Parameters: {"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>1, "id"=>"3", "todo"=>{"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:35:in `user'
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."user_id" = ? AND "todos"."id" = ? LIMIT ?[0m  [["user_id", 2], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:24:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:24:in `destroy'
+  [1m[36mTodo Destroy (0.5ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/todos_controller.rb:24:in `destroy'
+  [1m[36mTRANSACTION (83.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:24:in `destroy'
+Completed 204 No Content in 96ms (Views: 0.4ms | ActiveRecord: 84.4ms | Allocations: 2743)
+
+
+Started DELETE "/todos" for 127.0.0.1 at 2023-03-23 13:14:36 +0300
+  
+ActionController::RoutingError (No route matches [DELETE] "/todos"):
+  
+Started GET "/todos" for 127.0.0.1 at 2023-03-23 13:14:43 +0300
+Processing by TodosController#index as */*
+  Parameters: {"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>1, "todo"=>{"title"=>"Add todo endpoint", "description"=>"Make sure you create a todo on thunder client", "priority"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:35:in `user'
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/controllers/application_controller.rb:6:in `app_response'
+Completed 200 OK in 8ms (Views: 3.3ms | ActiveRecord: 0.4ms | Allocations: 1565)
+
+
